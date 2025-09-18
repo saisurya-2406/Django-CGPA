@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGPA Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        #calculator {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background: #fff;
+            box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: darkblue;
+            text-align: center;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        form {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        button, a.btn {
+            display: inline-block;
+            padding: 8px 15px;
+            margin: 5px;
+            background: #e9ecef;
+            color: black;
+            border: 1px solid #999;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        button:hover, a.btn:hover {
+            background: #d6d8db;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        th {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+        #logout {
+            display: block;
+            width: fit-content;
+            margin: 20px auto;
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+        }
+        #logout:hover {
+            background: #f1b0b7;
+        }
+    </style>
+</head>
+<body>
+<div id="calculator">
+    <h1>SRMIST CGPA Calculator</h1>
+
+    <form method="post" action="{% url 'cgpa_calculator' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Subject</button>
+        <a href="{% url 'result' %}" class="btn">Generate Result</a>
+    </form>
+
+    <table>
+        <thead>
+        <tr>
+            <th>Subject</th>
+            <th>Grade</th>
+            <th>Credit</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for subject in subjects %}
+            <tr>
+                <td>{{ subject.name }}</td>
+                <td>{{ subject.grade }}</td>
+                <td>{{ subject.credit }}</td>
+                <td>
+                    <a href="{% url 'edit_subject' subject.id %}" class="btn">Edit</a>
+                    <a href="{% url 'delete_subject' subject.id %}" class="btn">Delete</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<a href="{% url 'logout' %}" id="logout" class="btn">Logout</a>
+</body>
+</html>
