@@ -13,7 +13,7 @@ Users can **register/login**, add subjects with grades and credit hours, and gen
 -  **GPA Calculation** – GPA for each semester  
 -  **CGPA Calculation** – Add multiple semesters and compute total CGPA  
 -  **Results Dashboard** – View all subjects and GPA results  
-- ⬇**Export to PDF** – Download GPA/CGPA report  
+- **Export to PDF** – Download GPA/CGPA report  
 
 
 ---
@@ -27,7 +27,9 @@ Users can **register/login**, add subjects with grades and credit hours, and gen
    source venv/bin/activate  # Linux/Mac
 -pip install -r requirements.txt
 -python manage.py migrate
+
 -python manage.py runserver
+
 http://127.0.0.1:8000/
 <img width="1506" height="661" alt="image" src="https://github.com/user-attachments/assets/37ee1264-93ba-4b81-8648-64094a51223b" />
 <img width="1303" height="609" alt="image" src="https://github.com/user-attachments/assets/95adda48-0b4d-41db-8f44-8be1f6c55e17" />
