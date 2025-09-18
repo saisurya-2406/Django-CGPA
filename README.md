@@ -26,6 +26,7 @@ Users can **register/login**, add subjects with grades and credit hours, and gen
    venv\Scripts\activate     # Windows
    source venv/bin/activate  # Linux/Mac
 -pip install -r requirements.txt
+
 -python manage.py migrate
 
 -python manage.py runserver
